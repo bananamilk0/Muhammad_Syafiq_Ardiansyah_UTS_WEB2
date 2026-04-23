@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keranjang - MatchaShop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            matcha: {
+              50: '#F5F9F0',
+              100: '#E8F3DC',
+              200: '#C8E6A0',
+              300: '#A8D46A',
+              400: '#8AAD5A',
+              500: '#6B8F47',
+              600: '#5C7A3E',
+              700: '#4A6332',
+              800: '#3D5229',
+              900: '#2E3D1E',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-matcha-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Page Header -->
+    <div class="flex items-center gap-3 mb-6">
+      <a href="home.html" class="text-gray-400 hover:text-matcha-600 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Keranjang Belanja</h1>
+    </div>
+
+    <!-- Empty Cart State -->
+    <div id="emptyCart" class="hidden text-center py-20 fade-in">
+      <div class="text-8xl mb-4">🛒</div>
+      <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Keranjang Anda Kosong</h3>
+      <p class="text-gray-500 dark:text-gray-400 mb-6">Yuk, mulai belanja dan temukan produk favoritmu!</p>
+      <a
+        href="home.html"
+        class="inline-block bg-matcha-600 hover:bg-matcha-700 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 active:scale-95"
+      >
+        Mulai Belanja
+      </a>
+    </div>
+
+    <!-- Cart Content -->
+    <div id="cartContent" class="hidden fade-in">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Cart Items -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-semibold text-gray-700 dark:text-gray-300 text-sm">Item dalam Keranjang</h2>
+            <button
+              id="clearCartBtn"
+              class="text-xs text-red-500 hover:text-red-700 transition-colors flex items-center gap-1"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+              </svg>
+              Kosongkan Keranjang
+            </button>
+          </div>
+          <div id="cartItems" class="space-y-3"></div>
+        </div>
+
+        <!-- Order Summary -->
+        <div id="orderSummary"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/toast.js"></script>
+  <script src="../data/products.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart.js"></script>
+  <script>
+    initCartPage();
+
+    // Clear cart button
+    document.getElementById('clearCartBtn')?.addEventListener('click', function() {
+      if (confirm('Yakin ingin mengosongkan keranjang?')) {
+        setCart([]);
+        updateNavCounts();
+        toast.info('Keranjang telah dikosongkan');
+        renderCart();
+      }
+    });
+  </script>
+</body>
+</html>

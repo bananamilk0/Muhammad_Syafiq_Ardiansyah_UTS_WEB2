@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masuk - MatchaShop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            matcha: {
+              50: '#F5F9F0',
+              100: '#E8F3DC',
+              200: '#C8E6A0',
+              300: '#A8D46A',
+              400: '#8AAD5A',
+              500: '#6B8F47',
+              600: '#5C7A3E',
+              700: '#4A6332',
+              800: '#3D5229',
+              900: '#2E3D1E',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .shake { animation: shake 0.4s ease-in-out; }
+
+    .bg-matcha-pattern {
+      background-color: #5C7A3E;
+      background-image: radial-gradient(circle at 20% 50%, rgba(138,173,90,0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(61,82,41,0.4) 0%, transparent 40%),
+                        radial-gradient(circle at 60% 80%, rgba(200,230,160,0.2) 0%, transparent 40%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-matcha-50 dark:bg-gray-900 flex">
+
+  <!-- Left Panel (decorative) -->
+  <div class="hidden lg:flex lg:w-1/2 bg-matcha-pattern flex-col items-center justify-center p-12 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-32 h-32 rounded-full bg-white"></div>
+      <div class="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-white"></div>
+      <div class="absolute top-1/2 left-1/3 w-20 h-20 rounded-full bg-white"></div>
+    </div>
+    <div class="relative z-10 text-center text-white">
+      <div class="text-8xl mb-6">🍵</div>
+      <h1 class="text-4xl font-bold mb-4">MatchaShop</h1>
+      <p class="text-matcha-200 text-lg leading-relaxed max-w-sm">
+        Temukan produk terbaik dengan pengalaman belanja yang menyenangkan dan mudah.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 text-left">
+        <div class="flex items-center gap-3 bg-white bg-opacity-10 rounded-xl p-3">
+          <span class="text-2xl">🛒</span>
+          <div>
+            <p class="font-semibold">Belanja Mudah</p>
+            <p class="text-matcha-200 text-sm">Ribuan produk pilihan tersedia</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 bg-white bg-opacity-10 rounded-xl p-3">
+          <span class="text-2xl">🚚</span>
+          <div>
+            <p class="font-semibold">Gratis Ongkir</p>
+            <p class="text-matcha-200 text-sm">Untuk pembelian di atas Rp 100.000</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 bg-white bg-opacity-10 rounded-xl p-3">
+          <span class="text-2xl">🔒</span>
+          <div>
+            <p class="font-semibold">Transaksi Aman</p>
+            <p class="text-matcha-200 text-sm">Data Anda terlindungi dengan baik</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Panel (form) -->
+  <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
+    <div class="w-full max-w-md fade-in-up">
+      <!-- Mobile Logo -->
+      <div class="lg:hidden text-center mb-8">
+        <div class="inline-flex items-center gap-2">
+          <span class="text-4xl">🍵</span>
+          <span class="text-3xl font-bold text-matcha-600">MatchaShop</span>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Selamat Datang!</h2>
+          <p class="text-gray-500 dark:text-gray-400 mt-1">Masuk ke akun Anda untuk melanjutkan</p>
+        </div>
+
+        <form id="loginForm" class="space-y-5">
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              Email
+            </label>
+            <div class="relative">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="nama@email.com"
+                required
+                autocomplete="email"
+                class="w-full px-4 py-3 pl-11 border border-gray-200 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-matcha-400 focus:border-transparent transition"
+              />
+              <svg class="absolute left-3.5 top-3.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              Password
+            </label>
+            <div class="relative">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Masukkan password"
+                required
+                autocomplete="current-password"
+                class="w-full px-4 py-3 pl-11 pr-11 border border-gray-200 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-matcha-400 focus:border-transparent transition"
+              />
+              <svg class="absolute left-3.5 top-3.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              <button
+                type="button"
+                id="togglePassword"
+                class="absolute right-3.5 top-3.5 text-gray-400 hover:text-gray-600 transition"
+              >
+                <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            id="loginBtn"
+            class="w-full bg-matcha-600 hover:bg-matcha-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 active:scale-95 mt-2"
+          >
+            Masuk
+          </button>
+        </form>
+
+        <!-- Demo Login -->
+        <div class="mt-4">
+          <button
+            id="demoLoginBtn"
+            class="w-full border border-matcha-300 text-matcha-600 dark:text-matcha-400 hover:bg-matcha-50 dark:hover:bg-matcha-900 font-medium py-3 px-6 rounded-xl transition-all duration-200 text-sm"
+          >
+            🍵 Coba dengan Akun Demo
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-6">
+          <div class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+          <span class="text-xs text-gray-400">atau</span>
+          <div class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+
+        <!-- Register link -->
+        <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+          Belum punya akun?
+          <a href="register.html" class="text-matcha-600 dark:text-matcha-400 font-semibold hover:underline ml-1">
+            Daftar Sekarang
+          </a>
+        </p>
+      </div>
+
+      <!-- Footer note -->
+      <p class="text-center text-xs text-gray-400 mt-6">
+        Dengan masuk, Anda menyetujui syarat dan ketentuan MatchaShop
+      </p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/toast.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    // Init dark mode
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.documentElement.classList.add('dark');
+    }
+
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function() {
+      const input = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+        `;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        `;
+      }
+    });
+
+    initLoginPage();
+  </script>
+</body>
+</html>
